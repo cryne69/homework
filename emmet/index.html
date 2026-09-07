@@ -4,25 +4,225 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emmet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 0 15px;
+      line-height: 1.5;
+    }
+    pre {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .result {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    /* чтобы пустые элементы было видно */
+    .boxes header,
+    .boxes nav,
+    .boxes ul,
+    .boxes li,
+    .boxes div,
+    .boxes main,
+    .boxes footer {
+      border: 1px dashed #999;
+      min-height: 20px;
+      margin: 3px;
+      padding: 3px;
+    }
+    .boxes table {
+      border-collapse: collapse;
+    }
+    .boxes td {
+      border: 1px solid #999;
+      width: 40px;
+      height: 25px;
+    }
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 200px;
+    }
+    .card-title {
+      font-weight: bold;
+    }
+    .card img {
+      display: block;
+      width: 100%;
+      height: 100px;
+      background: #eee;
+    }
+    .price-cur {
+      margin-left: 4px;
+    }
+  </style>
 </head>
 <body>
-  <main>
-    <h1>Emmet</h1>
-    <ul>
-      <li>Быстрый</li>
-      <li>Удобный</li>
-      <li>Нескучные обои</li>
-    </ul>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-    <p>Emmet помогает мне писать вёрстку быстрее</p>
-  </main>
+
+  <h1>Emmet</h1>
+
+  <h2>Пример 1</h2>
+  <pre>header&gt;.logo+nav&gt;ul&gt;li*3</pre>
+  <pre>&lt;header&gt;
+  &lt;div class="logo"&gt;&lt;/div&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</pre>
+  <p>Как это выглядит:</p>
+  <div class="result boxes">
+    <header>
+      <div class="logo"></div>
+      <nav>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <h2>Пример 2</h2>
+  <pre>table&gt;tr*3&gt;td*3</pre>
+  <pre>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+  <p>Как это выглядит:</p>
+  <div class="result boxes">
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Пример 3</h2>
+  <pre>header+main+footer</pre>
+  <pre>&lt;header&gt;&lt;/header&gt;
+&lt;main&gt;&lt;/main&gt;
+&lt;footer&gt;&lt;/footer&gt;</pre>
+  <p>Как это выглядит:</p>
+  <div class="result boxes">
+    <header></header>
+    <main></main>
+    <footer></footer>
+  </div>
+
+  <h2>Пример 4</h2>
+  <pre>div.item-$*3</pre>
+  <pre>&lt;div class="item-1"&gt;&lt;/div&gt;
+&lt;div class="item-2"&gt;&lt;/div&gt;
+&lt;div class="item-3"&gt;&lt;/div&gt;</pre>
+  <p>Как это выглядит:</p>
+  <div class="result boxes">
+    <div class="item-1">item-1</div>
+    <div class="item-2">item-2</div>
+    <div class="item-3">item-3</div>
+  </div>
+
+  <h2>Пример 5</h2>
+  <pre>section.cards&gt;article.card&gt;div.card-title{Название товара}+img[src="/images/card-item-1.png"][alt="Товар-1"]+(.card-price&gt;span.price-sum{24 000}+span.price-cur{руб.})+button{Заказать}</pre>
+  <pre>&lt;section class="cards"&gt;
+  &lt;article class="card"&gt;
+    &lt;div class="card-title"&gt;Название товара&lt;/div&gt;
+    &lt;img src="/images/card-item-1.png" alt="Товар-1"&gt;
+    &lt;div class="card-price"&gt;
+      &lt;span class="price-sum"&gt;24 000&lt;/span&gt;
+      &lt;span class="price-cur"&gt;руб.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button&gt;Заказать&lt;/button&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</pre>
+  <p>Как это выглядит:</p>
+  <div class="result">
+    <section class="cards">
+      <article class="card">
+        <div class="card-title">Название товара</div>
+        <img src="placeholder.svg" alt="Товар-1">
+        <div class="card-price">
+          <span class="price-sum">24 000</span>
+          <span class="price-cur">руб.</span>
+        </div>
+        <button>Заказать</button>
+      </article>
+    </section>
+  </div>
+
+  <h2>Задание</h2>
+
+  <p>Воспроизвести вёрстку с помощью Emmet:</p>
+
+  <pre>main&gt;h1{Emmet}+ul&gt;li{Быстрый}+li{Удобный}+li{Нескучные обои}^p{Emmet помогает мне писать вёрстку быстрее}*10</pre>
+
+  <pre>&lt;main&gt;
+  &lt;h1&gt;Emmet&lt;/h1&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Быстрый&lt;/li&gt;
+    &lt;li&gt;Удобный&lt;/li&gt;
+    &lt;li&gt;Нескучные обои&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;p&gt;Emmet помогает мне писать вёрстку быстрее&lt;/p&gt;
+  &lt;!-- и так десять раз --&gt;
+&lt;/main&gt;</pre>
+
+  <p>Как это выглядит:</p>
+
+  <div class="result">
+    <main>
+      <h1>Emmet</h1>
+      <ul>
+        <li>Быстрый</li>
+        <li>Удобный</li>
+        <li>Нескучные обои</li>
+      </ul>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+      <p>Emmet помогает мне писать вёрстку быстрее</p>
+    </main>
+  </div>
+
 </body>
 </html>
